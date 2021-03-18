@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import http from '../http.js'
 import 'vant/lib/index.css'
+import 'vant/lib/icon/local.css'
 import { Toast, Field } from 'vant'
 
 Vue.prototype.$http = http

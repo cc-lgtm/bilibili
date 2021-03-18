@@ -1,6 +1,8 @@
 <template>
   <div class="register">
-    <LoginTop middletop="注册bilibili"></LoginTop>
+    <LoginTop middletop="注册bilibili">
+      <div slot="right" style="font-size:3.611vw" @click="$router.push('/login')">登陆</div>
+    </LoginTop>
     <LoginText label="姓名" style="margin:4.167vw 0"
     placeholder="请输入姓名"
     rule="^.{6,16}$"
@@ -52,6 +54,11 @@ export default {
           rule.test(this.model.password)) {
         const res = await this.$http.post('/register', this.model)
         this.$msg.fail(res.data.msg)
+        localStorage.setItem('id', res.data.id)
+        localStorage.setItem('token', res.data.objtoken)
+        setImmediate(() => {
+          this.$router.push('/userinfo')
+        }, 1000)
       } else {
         this.$msg.fail('格式不正确,重新输入')
       }
