@@ -2,6 +2,7 @@
   <div class="userdetail">
     <div>
       <div class="user_img">
+        <img :src="userInfo.user_img" v-if="userInfo.user_img">
         <img src="../../assets/default_img.jpg">
       </div>
       <div class="user_edit">
@@ -19,13 +20,14 @@
             <span class="user_text">获赞</span>
           </p>
         </div>
-        <div>
+        <div @click="$router.push('/edit')">
           <div class="user_editBtn">编辑资料</div>
         </div>
       </div>
     </div>
     <div>
-      <h2>嗯哼</h2>
+      <h2>{{userInfo.name}}</h2>
+      <p v-if="userInfo.user_desc">{{userInfo.user_desc}}</p>
       <p>这个人很嬾，什么都没有写</p>
     </div>
   </div>
@@ -33,7 +35,8 @@
 
 <script>
 export default {
-  name: 'userdetail'
+  name: 'userdetail',
+  props: ['userInfo']
 }
 </script>
 

@@ -2,27 +2,35 @@
   <div class="userinfo">
     <Navbar />
     <img src="../../src/assets/bannerTop_new.png" class="backImg">
-    <Userdetail />
+    <Userdetail :userInfo='model'/>
+    <Userarticle />
   </div>
 </template>
 
 <script>
 import Navbar from '../components/common/Navbar.vue'
 import Userdetail from '../components/userComponent/userDetail.vue'
+import Userarticle from '../components/userComponent/userArticle.vue'
 export default {
   name: 'userinfo',
+  data () {
+    return {
+      model: {}
+    }
+  },
   components: {
     Navbar,
-    Userdetail
+    Userdetail,
+    Userarticle
   },
   methods: {
     async UserinfoData () {
       const res = await this.$http.get('/user/' + localStorage.getItem('id'), {
-        Headers: {
-          'Authorization': 'Bearer' + localStorage.getItem('token')
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token')
         }
       })
-      console.log(res)
+      this.model = res.data[0]
     }
   },
   created () {

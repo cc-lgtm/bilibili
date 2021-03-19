@@ -56,7 +56,7 @@ export default {
         this.$msg.fail(res.data.msg)
         localStorage.setItem('id', res.data.id)
         localStorage.setItem('token', res.data.objtoken)
-        setImmediate(() => {
+        setTimeout(() => {
           this.$router.push('/userinfo')
         }, 1000)
       } else {
