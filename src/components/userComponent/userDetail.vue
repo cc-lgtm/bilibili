@@ -3,7 +3,7 @@
     <div>
       <div class="user_img">
         <img :src="userInfo.user_img" v-if="userInfo.user_img">
-        <img src="../../assets/default_img.jpg">
+        <img src="../../assets/default_img.jpg" v-else>
       </div>
       <div class="user_edit">
         <div>
@@ -28,7 +28,7 @@
     <div>
       <h2>{{userInfo.name}}</h2>
       <p v-if="userInfo.user_desc">{{userInfo.user_desc}}</p>
-      <p>这个人很嬾，什么都没有写</p>
+      <p v-else>这个人很嬾，什么都没有写</p>
     </div>
   </div>
 </template>
